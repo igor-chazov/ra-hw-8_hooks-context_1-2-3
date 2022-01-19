@@ -12,8 +12,6 @@ if (url.hostname === 'igor-chazov.github.io') {
 const root = url;
 root.pathname = '';
 
-const links = {
-  root: root.origin,
-};
+const links = root.origin;
 
 export default links;
