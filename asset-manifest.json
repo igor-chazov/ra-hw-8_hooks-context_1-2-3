@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/ra-hw-8_hooks-context_1-2-3/static/css/main.06323b01.css",
+    "main.js": "/ra-hw-8_hooks-context_1-2-3/static/js/main.7d0f296a.js",
+    "static/js/787.0d6f5812.chunk.js": "/ra-hw-8_hooks-context_1-2-3/static/js/787.0d6f5812.chunk.js",
+    "static/media/Montserrat-Regular.woff2": "/ra-hw-8_hooks-context_1-2-3/static/media/Montserrat-Regular.4d9eac545dbd8e6e6e7d.woff2",
+    "static/media/Montserrat-Regular.woff": "/ra-hw-8_hooks-context_1-2-3/static/media/Montserrat-Regular.2f9bb87d767918726ee3.woff",
+    "static/media/Ellipsis-1.3s.svg": "/ra-hw-8_hooks-context_1-2-3/static/media/Ellipsis-1.3s.0c4d32abf80cf84827b5.svg",
+    "static/media/Radio-0.8s.svg": "/ra-hw-8_hooks-context_1-2-3/static/media/Radio-0.8s.0a6a4a5482efe28e3947.svg",
+    "index.html": "/ra-hw-8_hooks-context_1-2-3/index.html",
+    "main.06323b01.css.map": "/ra-hw-8_hooks-context_1-2-3/static/css/main.06323b01.css.map",
+    "main.7d0f296a.js.map": "/ra-hw-8_hooks-context_1-2-3/static/js/main.7d0f296a.js.map",
+    "787.0d6f5812.chunk.js.map": "/ra-hw-8_hooks-context_1-2-3/static/js/787.0d6f5812.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.06323b01.css",
+    "static/js/main.7d0f296a.js"
+  ]
+}
