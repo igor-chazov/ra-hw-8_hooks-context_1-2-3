@@ -1,7 +1,7 @@
 <a name="top"></a>
 
 # 8. Домашнее задание к лекции «Hooks, Context API»
-[[GithubPages](https://igor-chazov.github.io/ra-hw-8_hooks-context_1-2-3)]
+[![Build status](https://ci.appveyor.com/api/projects/status/ixaxmlenuwk4yhdh?svg=true)](https://ci.appveyor.com/project/igor-chazov/ra-hw-8-hooks-context-1-2-3) [[GithubPages](https://igor-chazov.github.io/ra-hw-8_hooks-context_1-2-3)]
 
 ---
 
