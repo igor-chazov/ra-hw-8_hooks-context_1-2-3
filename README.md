@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+<a name="top"></a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 8. Домашнее задание к лекции «Hooks, Context API»
+[[GithubPages](https://igor-chazov.github.io/ra-hw-8_hooks-context_1-2-3)]
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+**Перейти к:**  
+***[8.2 useJsonFetch](#8.2)  
+[8.3 Authentication*](#8.3)***
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 8.1 useEffect (Список и детали)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Вы решили потренироваться в использовании хука `useEffect` и реализовать следующее приложение - список с пользователями, при это при клике на пользователя рядом появляется окно, отображающее детальную информацию о пользователе:
 
-### `npm test`
+![useEffect](./assets/use-effect.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+При первой загрузке ни один из элементов не выбран, поэтому отображается только список:
 
-### `npm run build`
+![First load](./assets/first-load.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Механика
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Назовём первый компонент (который слева) - `List`, а второй (который справа) - `Details`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Реализуйте следующую логику:
+* При загрузке приложения один раз делается запрос по адресу: https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/users.json и отрисовывается список в компоненте `List`
+* При клике на конкретный элемент списка в компонент `Details` передаются один props: `info` (объект с полями `id` и `name`) и начинается загрузка данных по адресу: https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/hooks-context/use-effect/data/{id}.json, где {id} - это id пользователя из props.
+* На время загрузки можете отображать индикатор загрузки (протестируйте с помощью выставления ограничения пропускной способности сети в Dev Tools)
 
-### `npm run eject`
+Важные момент:
+1. Вся загрузка должна происходить через хук `useEffect`. Подумайте, как организовать единоразовую загрузку и загрузку при каждом изменении `props.info.id`
+1. Обратите внимание, загрузка деталей должна происходить только при изменении `props.info.id`, а не при каждом рендере. Т.е. если на одного и того же пользователя кликнуть дважды, то загрузка произойдёт только в первый раз.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## <a name="8.2">8.2 useJsonFetch</a>
+***[(наверх)](#top)***
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Реализуйте кастомный хук `useJsonFetch`, который позволяет с помощью `fetch` осуществлять HTTP-запросы.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Использование этого хука должно выглядеть следующим образом:
+```javascript
+const [data, loading, error] = useJsonFetch(url, opts);
+```
 
-## Learn More
+где:
+* `data` - данные, полученные после `response.json()` (не Promise, а именно данные)
+* `error` - ошибка (ошибка сети, ошибка ответа - если код не 20x, ошибка парсинга - если пришёл не JSON)
+* `loading` - boolean флаг, сигнализирующий о том, что загрузка идёт
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Покажите использование этого хука на примере трёх компонентов, каждый из которых делает запросы на следующие адреса (backend возьмите из каталога `backend`):
+* GET http://localhost:7070/data - успешное получение данных
+* GET http://localhost:7070/error - получение 500 ошибки
+* GET http://localhost:7070/loading - индикатор загрузки
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## <a name="8.3">8.3 Authentication*</a>
+***[(наверх)](#top)***
 
-### Analyzing the Bundle Size
+Вы решили построить систему с аутентификацией.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Используя сервер, расположенный в каталоге `backend`, реализуйте следующее приложение, удовлетворяющее следующим условиям:
 
-### Making a Progressive Web App
+1. При первой загрузке показывается Landing-страница с формой входа:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![](./assets/unauthenticated.png)
 
-### Advanced Configuration
+2. После авторизации (POST http://localhost:7070/auth `{"login": "vasya", "password": "password"}`), загружаются компонент ленты новостей и в тулбаре отображается профиль с кнопкой выйти:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![](./assets/authenticated.png)
 
-### Deployment
+Для запроса профиля используйте запрос вида:
+```
+GET http://localhost:7070/private/me
+Authorization: Bearer <ваш_токен>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Для запроса новостей используйте запрос вида:
+```
+GET http://localhost:7070/private/news
+Authorization: Bearer <ваш_токен>
+```
 
-### `npm run build` fails to minify
+Важно:
+1. Профиль и токен должны храниться в localStorage/sessionStorage (при перезагрузке страницы должна так же загружаться лента новостей, если мы аутентифицированы)
+1. Должна быть обработка ошибок, если получена ошибка 401 - то нужно разлогинивать пользователя (удалять всё из localStorage/sessionStorage)
+1. Не используйте React Router, просто подменяйте компоненты в зависимости от текущего состояния аутентификации.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---

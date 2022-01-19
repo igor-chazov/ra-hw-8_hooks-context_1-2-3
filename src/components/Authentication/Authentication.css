@@ -1,0 +1,124 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgb(170, 170, 170);
+  background-color: #f5f5f5;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.toolbar__logo {
+  font-size: 1.3rem;
+}
+
+.toolbar__form {
+  display: flex;
+}
+
+.toolbar__form > input {
+  border: 1px solid #cfcfcf;
+  outline: none;
+  border-radius: 5px;
+  padding: 0.5rem 0.8rem;
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.toolbar__form > input:focus {
+  outline: 1px solid grey;
+  outline-offset: -2px;
+}
+
+.toolbar__form-button,
+.toolbar__profile-button {
+  height: 42px;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #0aaf70;
+  color: #0aaf70;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.toolbar__profile {
+  display: flex;
+  align-items: center;
+}
+
+.toolbar__profile-name {
+  font-weight: bold;
+}
+
+.toolbar__profile-avatar {
+  margin: 0px 0.5rem;
+}
+
+.toolbar__profile-avatar img {
+  max-height: 40px;
+  border-radius: 50%;
+  display: block;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.toolbar__profile-button {
+  border-color: #ce0b25;
+  color: #ce0b25;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  background-color: #ebebeb;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 10px;
+  color: #000311;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.news-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.news {
+  width: calc(50% - 2rem);
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.news__image img {
+  display: block;
+  max-width: 100%;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.news__title {
+  margin: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.news__content {
+  font-size: 0.9rem;
+  margin: 1rem;
+}
+
+@media (max-width: 679px) {
+  .news {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+  }
+}
